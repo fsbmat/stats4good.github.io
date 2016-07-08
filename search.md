@@ -4,7 +4,7 @@ title: "Search deanattali.com"
 css: "/css/search.css"
 ---
 
-# Pesquisando em Stat4Good
+# Pesquisando em Stats4Good
 
 ### Using the Amazing Google
 

@@ -1,5 +1,5 @@
 ---
-title: Stat4Good
+title: Stats4Good
 subtitle: Workshop
 ---
 

@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Stat4Good
+title: Stats4Good
 subtitle: O que é?
 ---
 
 Um grupo cuja proposta segue três princípios: (i) aprender , (ii) ensinar e (iii) discutir . Estes princípios serão aplicados nas mais recentes tecnologias em análise, modelagem, gerenciamento e visualização de dados. Cada participante passará por todos os princípios, como mostra a figura abaixo:
 
-<img src="/img/fig1aboutme_stat4good.png"  align="middle"/>
+<img src="/img/fig1aboutme_stats4good.png"  align="middle"/>
 
 Seguindo os três princípios citados anteriormente este grupo tem os seguintes objetivos:
 
