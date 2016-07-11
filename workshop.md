@@ -16,8 +16,12 @@ Presenças confirmadas:
 **Larissa Sayuri Futino C. dos Santos** - Usando o twitter em criminalidade: Coleta, classificação e apresentação de dados
 
 
+
+
 **Data:** 26/08/2016
+
 **Hora** A partir das 09:15
+
 **Local:** Auditório 3 do ICEx
 
 
