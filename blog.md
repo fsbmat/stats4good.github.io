@@ -1,6 +1,6 @@
 ---
 title: Stats4Good
-subtitle: Workshop
+subtitle: Blog
 ---
 
 
