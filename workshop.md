@@ -17,3 +17,5 @@ A inscrição é gratuíta através do [site de inscrição](https://www.eventbr
 
 **Local:** Auditório 3 do ICEx
 
+**Programação em breve**
+
