@@ -23,6 +23,6 @@ A inscrição é gratuíta através do [site de inscrição](https://encontros4g
 * **Larissa Sayuri** - Usando o twitter para criminalidade: Coleta, classificação e apresentação de dados
 * **Bernardo Nunes** - Probabilidades no futebol
 * **Thaís Paiva** - Privacidade: Desafios da Estatística da era do Big Data
-* **Raquel Aoki** - Estudo do desempenho acadêmico dos estudantes da UFMG em na disciplina Cálculo Diferencial e Integral I
+* **Raquel Aoki** - Estudo do desempenho acadêmico dos estudantes da UFMG na disciplina Cálculo Diferencial e Integral I
 * **Renato Assunção** - A profissão de cientista dos dados
 
