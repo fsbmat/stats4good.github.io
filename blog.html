@@ -3,20 +3,43 @@ title: Blog
 layout: default
 ---
 
-<!-- Main -->
-	<div id="main">
-		<div id="content" class="container">
-			{% for post in paginator.blogHTML offset: 0 limit: 4 %}
-			<div class="row">
-				<section class="8u -2u">
-					<a href="{{ site.prefix }}{{ post.url }}" class="image full"><img src="/assets/{{ post.featured }}" alt=""></a>
-					<header>
-						<h2>{{ post.title }}</h2>
-					</header>
-					{{ post.excerpt }}
-					<a href="{{ site.prefix }}{{ post.url }}" class="button button-style1">Read More</a>
-				</section>
-			</div>
-			{% endfor %}
-		</div>
-	</div>
+<div class="posts-list">
+  {% for post in paginator.blogHTML %}
+  <article class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+	  <h2 class="post-title">{{ post.title }}</h2>
+	
+	  {% if post.subtitle %}
+	  <h3 class="post-subtitle">
+	    {{ post.subtitle }}
+	  </h3>
+	  {% endif %}  
+    </a>
+
+    <p class="post-meta">
+      Posted on {{ post.date | date: "%B %-d, %Y" }}
+    </p>
+  
+    <div class="post-entry">
+      {{ post.content | truncatewords: 50 | strip_html | xml_escape}}
+	  <a href="{{ post.url | prepend: site.baseurl }}" class="post-read-more">[Read&nbsp;More]</a>
+    </div>
+  
+   </article>
+  {% endfor %}
+</div>
+
+{% if paginator.total_pages > 1 %}
+<ul class="pager main-pager">
+  {% if paginator.previous_page %}
+  <li class="previous">
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+  </li>
+  {% endif %}
+  {% if paginator.next_page %}
+  <li class="next">
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+  </li>
+  {% endif %}
+</ul>
+{% endif %}
