@@ -12,7 +12,7 @@ A inscrição é gratuíta através do [site de inscrição](https://encontros4g
 
 **Data:** 26/08/2016
 
-**Hora** A partir das 09:15
+**Horário:** 09:15
 
 **Local:** Auditório 3 do ICEx
 
