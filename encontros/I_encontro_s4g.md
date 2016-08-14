@@ -19,7 +19,7 @@ A inscrição é gratuíta através do [site de inscrição](https://encontros4g
 **Atrações**
 
 * **Geraldo Franciscani** - Aplicações de D3.js em cenários reais de visualização de dados
-* **Roberto Nalon** - Web scraping
+* **Roberto Nalon** - A web como fonte de dados: oportunidades e desafios
 * **Larissa Sayuri** - Usando o twitter para criminalidade: Coleta, classificação e apresentação de dados
 * **Bernardo Nunes** - Probabilidades no futebol
 * **Thaís Paiva** - Privacidade: Desafios da Estatística da era do Big Data
