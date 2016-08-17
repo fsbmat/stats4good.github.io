@@ -24,5 +24,6 @@ A inscrição é gratuíta através do [site de inscrição](https://encontros4g
 * **Bernardo Nunes** - Probabilidades no futebol
 * **Thaís Paiva** - Privacidade: Desafios da Estatística da era do Big Data
 * **Raquel Aoki** - Estudo do desempenho acadêmico dos estudantes da UFMG na disciplina Cálculo Diferencial e Integral I
+* **Bernardo Lanza** - The Evolution of the Labor Force and Retirement in Brazil, 1980-2050
 * **Renato Assunção** - A profissão de cientista dos dados
 
