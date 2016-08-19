@@ -21,7 +21,6 @@ A inscrição é gratuita através do [site de inscrição](https://encontros4g.
 * **Geraldo Franciscani** - Aplicações de D3.js em cenários reais de visualização de dados
 * **Roberto Nalon** - A _web_ como fonte de dados: oportunidades e desafios
 * **Larissa Sayuri** - Usando o Twitter para criminalidade: Coleta, classificação e apresentação de dados
-* **Bernardo Nunes** - Probabilidades no futebol
 * **Thaís Paiva** - Privacidade: Desafios da Estatística da era do _Big Data_
 * **Raquel Aoki** - Estudo do desempenho acadêmico dos estudantes da UFMG na disciplina Cálculo Diferencial e Integral I
 * **Bernardo Lanza** - _The Evolution of the Labor Force and Retirement in Brazil, 1980-2050_
