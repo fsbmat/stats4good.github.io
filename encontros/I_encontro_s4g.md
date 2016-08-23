@@ -25,5 +25,5 @@ A inscrição é gratuita através do [site de inscrição](https://encontros4g.
 * **Raquel Aoki** - Estudo do desempenho acadêmico dos estudantes da UFMG na disciplina Cálculo Diferencial e Integral I
 * **Rodrigo Citton** - Comunicação do risco para o público e tomadores de decisão: um exemplo em risco de doença cardiovascular
 * **Bernardo Lanza** - _The Evolution of the Labor Force and Retirement in Brazil, 1980-2050_
-* **Renato Assunção** - A profissão de cientista dos dados
+* **Renato Assunção** - Estatística no século XXI
 
