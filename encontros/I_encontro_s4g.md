@@ -22,6 +22,7 @@ A inscrição é gratuita através do [site de inscrição](https://encontros4g.
 * **Roberto Nalon** - A _web_ como fonte de dados: oportunidades e desafios
 * **Larissa Sayuri** - Usando o Twitter para criminalidade: Coleta, classificação e apresentação de dados
 * **Thaís Paiva** - Privacidade: Desafios da Estatística da era do _Big Data_
+* **Pedro Franklin** - Como encontrar a(o) namorada(o) ideal: um passeio aleatório pelo universo da probabilidade.
 * **Raquel Aoki** - Estudo do desempenho acadêmico dos estudantes da UFMG na disciplina Cálculo Diferencial e Integral I
 * **Rodrigo Citton** - Comunicação do risco para o público e tomadores de decisão: um exemplo em risco de doença cardiovascular
 * **Bernardo Lanza** - _The Evolution of the Labor Force and Retirement in Brazil, 1980-2050_
