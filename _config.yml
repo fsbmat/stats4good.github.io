@@ -24,7 +24,7 @@ description: "Aprender, ensinar e discutir análise, modelagem, gerenciamento e 
 # List of links in the navigation bar
 navbar-links:
   Página inicial: "http://stats4good.github.io"
-  Blog: blog
+  Blog: "blog"
   O que é?: "aboutme"
   Integrantes: 
     - 2016 semestre 2: "members/2016_2"
