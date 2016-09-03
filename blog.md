@@ -6,10 +6,6 @@ subtitle: Blog
 
 ***
 
-<HR COLOR="green" WIDTH="60%">
-
-***
-
 <center><font size="8" color="#76a5af"><b><i>base</i> e <i>stringr</i>: Trabalhando com expressões regulares para manipular strings</b></font></center>
 
 ***
@@ -19,10 +15,6 @@ subtitle: Blog
 **12-08-2016 - Douglas R. Mesquita Azevedo:**
 
 Neste post irei escrever e exemplificar o uso de expressões regulares em possíveis situações bem como a sua utilização dentro do R. Para isso escolhi apresentar o pacote stringr além de algumas funções básicas contidas na base do R (base). Para conhecer a potencialidade das funções do pacote stringr e do base é necessário um bom conhecimento a respeito de expressões regulares. [[Leia mais]](/blog_posts/02-09-2016/stringr_regex)
-
-***
-
-<HR COLOR="green" WIDTH="60%">
 
 ***
 
@@ -36,9 +28,6 @@ Neste post irei escrever e exemplificar o uso de expressões regulares em possí
 
 A gente começa o Semestre 2/2016 com um grande exercício de metalinguagem. Vamos usar uma linguagem para descrever a si própria. Esse é um documento R Markdown com os objetivos de apresentar a linguagem, suas vantagens e usos e servir de modelo/base para futuras postagens do grupo. [[Leia mais]](/blog_posts/12-08-2016/RMarkdown)
 
-***
-
-<HR COLOR="green" WIDTH="60%">
 
 
 
