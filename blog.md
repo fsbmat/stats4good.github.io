@@ -6,7 +6,7 @@ subtitle: Blog
 
 ***
 
-<font size="8" color="#76a5afff">_base_ e _stringr_: Trabalhando com expressões regulares para manipular strings</font>
+<center><font size="8" color="#76a5af">*base* e *stringr*: Trabalhando com expressões regulares para manipular strings</font></center>
 
 ***
 
@@ -18,7 +18,7 @@ Neste post irei escrever e exemplificar o uso de expressões regulares em possí
 
 ***
 
-<font size="8" color="#76a5afff">RMarkdown: Just do it!</font>
+<center><font size="8" color="#76a5af">RMarkdown: Just do it!</font></center>
 
 ***
 
