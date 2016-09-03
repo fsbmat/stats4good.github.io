@@ -1,3 +1,7 @@
+---
+title:
+---
+
 ***
 
 <center><font size="8" color="#76asaf"><b>I Encontro do Stats4Good</b></font></center>
