@@ -8,7 +8,7 @@ title: Stats4Good
 
 ***
 
-<center><img src="/Grupo.jpg" I Encontro Stats4Good></center>
+<center><img src="I_encontro_s4g/Grupo.jpg" I Encontro Stats4Good></center>
 
 
 
