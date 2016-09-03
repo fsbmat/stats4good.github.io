@@ -4,6 +4,8 @@ title: Stats4Good
 subtitle: Blog
 ---
 
+***
+***
 
 <center><img src="/blog_posts/12-08-2016/markdown.png" Markdown></center>
 
