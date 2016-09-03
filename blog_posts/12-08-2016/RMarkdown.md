@@ -1,4 +1,5 @@
 ---
+layout: page
 title: "RMarkdown: Just do it"
 author: "Larissa Sayuri Futino C. dos Santos"
 date: "11 de agosto de 2016"
