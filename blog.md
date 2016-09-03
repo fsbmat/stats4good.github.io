@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Stats4Good
-subtitle: Aprender, ensinar e discutir análise, modelagem, gerenciamento e visualização de dados
+subtitle: Blog
 ---
 
 <div w3-include-html="blog/12-08-2016_LarissaSayuri_RMarkdown.html"></div>
