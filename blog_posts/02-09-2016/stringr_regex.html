@@ -66,7 +66,6 @@ h6 {
 }
 </style>
 
-<link href="data:text/css;charset=utf-8,body%7B%0Afont%2Dfamily%3A%20Comic%20Sans%20MS%3B%0Afont%2Dsize%3A%2014pt%3B%0A%7D%0A" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -200,14 +199,14 @@ ente$ = {malandramente, inocente, gente, …}
 </ul></li>
 </ul>
 <hr /></li>
-<li><p><span style="color:#ff382f">“|”</span>: Ao usar o metacaracter &lt;span style=“color:#2f8fcc”padrão_1|padrão_2</span> espera-se encontrar <em>strings</em> que contenham pelo menos um dos padrões especificados.</p></li>
+<li><p><span style="color:#ff382f">“|”</span>: Ao usar o metacaracter <span style="color:#2f8fcc">“padrão_1|padrão_2”</span> espera-se encontrar <em>strings</em> que contenham pelo menos um dos padrões especificados.</p></li>
 </ul>
 <center>
 “|” : Assovio|Assobio = {Assovio, Assobio}
 </center>
 <hr />
 <ul>
-<li><span style="color:#ff382f">“()”</span>: Ao usar o metacaracter &lt;span style=“color:#2f8fcc”(padrão)</span> o escopo do código é reduzido para o que está entre parênteses.</li>
+<li><span style="color:#ff382f">“()”</span>: Ao usar o metacaracter <span style="color:#2f8fcc">“(padrão)”</span> o escopo do código é reduzido para o que está entre parênteses.</li>
 </ul>
 <center>
 “()” : Assov|bio = {Assovio, Assobio, Assoviar, biologia, …}
@@ -217,14 +216,14 @@ ente$ = {malandramente, inocente, gente, …}
 </center>
 <hr />
 <ul>
-<li><span style="color:#ff382f">“?i”</span>: Ao usar o metacaracter &lt;span style=“color:#2f8fcc”?i</span> ignora-se caso sensitivo, não importando se a letra ou palavra está em escrita em letras maiúsculas ou minúsculas.</li>
+<li><span style="color:#ff382f">“?i”</span>: Ao usar o metacaracter <span style="color:#2f8fcc">“?i”</span> ignora-se caso sensitivo, não importando se a letra ou palavra está em escrita em letras maiúsculas ou minúsculas.</li>
 </ul>
 <center>
 “?i” : ((?i)D)ouglas = {douglas, Douglas}
 </center>
 <hr />
 <ul>
-<li><span style="color:#ff382f">“?”</span>: Ao usar o metacaracter &lt;span style=“color:#2f8fcc”padrãox?</span> o código busca pelo padrão acrescido ou não de x.</li>
+<li><span style="color:#ff382f">“?”</span>: Ao usar o metacaracter <span style="color:#2f8fcc">“padrãox?”</span> o código busca pelo padrão acrescido ou não de x.</li>
 </ul>
 <center>
 “?” : alunos?= {aluno, alunos}
@@ -712,7 +711,32 @@ Toda escolha que você fizer e toda decisão que você tomar terá seu lado bom 
 </div>
 <div id="criando-uma-ferramenta-de-validacao" class="section level3">
 <h3><span style="color:#2f8fcc">Criando uma ferramenta de validação</span></h3>
+<p>Para demonstrar o possível uso de expressões regulares no contexto de ferramenta de validação, vamos explorar as possíveis entradas de um questionário de avaliação. O título do questionário será: Você considera o R uma ferramenta poderosa?</p>
+<p>Para responder à este questionário o usuário deve criar um <em>loggin</em> e uma <em>senha</em>, pois, esse é um questionário restrito. Este <em>loggin</em> deve conter apenas letras e números. Já a senha deve conter pelo menos uma letra, um número e um caracter alfanumérico, além disso a senha deve conter exatamente oito caracteres.</p>
+<p>Após acessar o questionário o usuário deverá responder questões comuns e também responder a questão mais importante e que dá nome ao questionário. Tudo isso, é claro, será validade com a utilização de expressões regulares e das funções da base do R e também do pacote <em>stringr</em>. Questões utilizadas no questionário:</p>
+<ul>
+<li>Nome</li>
+<li>Sexo</li>
+<li>Idade</li>
+<li>CPF</li>
+<li>Cidade</li>
+<li>Estado</li>
+<li>CEP</li>
+<li>Telefone com DDD</li>
+<li>E-mail</li>
+<li>Você considera o R uma ferramenta poderosa?</li>
+</ul>
+<p>A ferramenta abaixo utiliza expressões regulares para consolidar as entradas de um questionário. Este questionário não está com todas as funcionalidades e possivelmente contenha erros. Caso encontre algum erro, me envie um e-mail (<a href="mailto:douglasrm.azevedo@gmail.com">douglasrm.azevedo@gmail.com</a>).</p>
+<p>Para executar a aplicação <a href="questionario.R">clique aqui</a> e copie o código.</p>
+<p>Existem muitos outros aspectos a serem estudados no mundo das expressões regulares. Além disso, o uso das ferramentas de manipulação de strings é estremamente útil em diversos casos. Espero que este documento sirva como uma primeira leitura para interessados em expressões regulares.</p>
 </div>
+</div>
+<div id="referencias" class="section level2">
+<h2><span style="color:#2f8fcc">Referências</span></h2>
+<p><a href="https://books.google.com.br/books?hl=pt-BR&amp;lr=&amp;id=CT-MHZyNK2wC&amp;oi=fnd&amp;pg=PR15&amp;dq=Mastering+Regular+Expressions,+Second+Edition+Jeffrey+E.F.+Friedl-O%27Reilly+(2002)&amp;ots=ecY2U03UQP&amp;sig=S7v-k5hP3kwhfgHs1xvuTruDXa4#v=onepage&amp;q&amp;f=false">Friedl, Jeffrey EF. Mastering regular expressions. &quot; O’Reilly Media, Inc.“, 2002.</a></p>
+<p><a href="https://cran.r-project.org/web/packages/stringr/stringr.pdf%20https://CRAN.R-project.org/package=stringr">Hadley Wickham (2016). stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.1.0.</a></p>
+<p><a href="https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html">Tutorial do stringr (vignettes)</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Regular_expression">Wikipedia - regular expression</a></p>
 </div>
 
 
