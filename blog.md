@@ -6,7 +6,9 @@ subtitle: Blog
 
 ***
 
-# <span style="color:#76a5afff">base e stringr: Trabalhando com expressões regulares para manipular strings</span>
+### _base_ e _stringr_: Trabalhando com expressões regulares para manipular strings
+
+***
 
 <center><img src="/blog_posts/02-09-2016/regex.jpg" Markdown></center>
 
@@ -16,7 +18,9 @@ Neste post irei escrever e exemplificar o uso de expressões regulares em possí
 
 ***
 
-# <span style="color:#76a5afff">RMarkdown: Just do it!</span>
+### <span style="color:#76a5afff">RMarkdown: Just do it!</span>
+
+***
 
 <center><img src="/blog_posts/12-08-2016/markdown.png" Markdown></center>
 
