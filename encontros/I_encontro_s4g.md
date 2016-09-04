@@ -44,7 +44,7 @@ title: Stats4Good
 
 <div class="clearfix float-my-children">
    <iframe src="https://www.youtube.com/embed/LxIJ2nZy9FE"></iframe>   
-   <div><b>Roberto Nalon:</b></div>
+   <div><b>Roberto Nalon:            </b></div>
    <br>
    <div>A web como fonte de dados:</div>
    <div>Oportunidades e desafios.</div>
