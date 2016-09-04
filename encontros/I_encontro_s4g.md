@@ -13,35 +13,14 @@ title: Stats4Good
 ***
 ***
 
-<style type="text/css">
-#wrap {
-   width:600px;
-   margin:0 auto;
-}
-#left_col {
-   float:left;
-   width:300px;
-}
-#right_col {
-   float:right;
-   width:300px;
-}
-</style>
-
-<div id="wrap">
-    <div id="left_col">
-        <iframe src="https://www.youtube.com/embed/0q1awh9KlEI"></iframe>
-    </div>
-    <div id="right_col">
-        <p align = "justify">Abertura do I encontro Stats4Good.</p>
-    </div>
+<div class="clearfix float-my-children">
+   <iframe src="https://www.youtube.com/embed/0q1awh9KlEI"></iframe>
+   <p align = "justify">Abertura do I encontro Stats4Good.</p>
 </div>
 
 ***
 
-<div class="left">
-    <iframe src="https://www.youtube.com/embed/0q1awh9KlEI"></iframe>
-</div>
-<div class="right">
-    <p align = "justify">Abertura do I encontro Stats4Good.</p>
+<div class="clearfix float-my-children">
+   <iframe src="https://www.youtube.com/embed/mRH6bwSghnM"></iframe>
+   <p align = "justify">Magda Pires, Glaura Franco e Marcos Prates: Programas de graduação e pós-graduação em estatística na UFMG.</p>
 </div>

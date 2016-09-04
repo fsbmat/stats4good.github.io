@@ -1,13 +1,24 @@
 @import url("pygment_highlights.css");
 
 /* --- General --- */
-.left {
-    float: left;
-    width: 50%;
+.float-my-children > * {
+    float:left;
+    margin-right:5px;
 }
-
-.right {
-    margin-left: 50%;
+.clearfix {
+    *zoom:1 /* for IE */
+}
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+body > div {
+    border:1px dashed red;
+    margin-bottom:10px;    
 }
 body {
   font-family: 'Lora', 'Times New Roman', serif;
