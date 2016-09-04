@@ -13,15 +13,9 @@ title: Stats4Good
 ***
 
 <div class="left">
-    <p>I have updated this example to show a great way of getting a two column layout.</p>
+    <iframe src="https://www.youtube.com/embed/0q1awh9KlEI"></iframe>
 </div>
 <div class="right">
-    <ul>
-        <li>The columns are in the right order semantically</li>
-        <li>You don't have to float both columns</li>
-        <li>You don't get any odd wrapping behaviour</li>
-        <li>The columns are fluid to the available page...</li>
-        <li>They don't have to be fluid to the available page - but any container!</li>
-    </ul>
+    Abertura do I encontro Stats4Good.
 </div>
 
