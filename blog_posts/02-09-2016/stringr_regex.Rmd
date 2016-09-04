@@ -1,0 +1,674 @@
+---
+output:
+  html_document:
+title: "base e stringr: Trabalhando com expressões regulares para manipular strings"
+author: "Douglas Mesquita"
+date: "02 de Setembro 2016"
+---
+
+<style>
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+  .col3 {
+    columns: 3 100px;
+    -webkit-columns: 3 100px;
+    -moz-columns: 3 100px;
+  }
+</style>
+
+Neste post irei escrever e exemplificar o uso de expressões regulares em possíveis situações bem como a sua utilização dentro do R. Para isso escolhi apresentar o pacote _stringr_ além de algumas funções básicas contidas na base do R (_base_). Para conhecer a potencialidade das funções do pacote _stringr_ e do _base_ é necessário um bom conhecimento a respeito de expressões regulares.
+
+## <span style="color:#2f8fcc">Expressões regulares - RegEx</span>
+
+Expressão regular ou RegEx do inglês _'Regular Expression'_ é uma poderosa ferramenta para manipulação de _strings_. Esta ferramenta visa a identificação de padrões textuais ou padrões de caracteres que casam com um determinado padrão especificado.
+
+Por exemplo, digamos que você tem uma base de dados com todas as palavras do dicionário e que o seu interesse é localizar as palavras terminadas em "<span style="color:#2f8fcc">ente</span>". Não é trivial procurar manualmente pois temos muitas palavras no dicionário. Uma pesquisa simples por "<span style="color:#2f8fcc">ente</span>" pode resultar em palavras como "<span style="color:#2f8fcc">ente</span>ado" e "<span style="color:#2f8fcc">ente</span>rro", que não são palavras do tipo desejado. Neste caso com o auxílio de expressões regulares, podemos procurar pelo seguinte padrão:
+
+<center><span style="color:#ff382f;font-size: 2em;">"ente$"</span></center>
+
+O sinal de dolar "$" indica que o padrão desejado "<span style="color:#2f8fcc">ente</span>" está localizado no final da _string_. Desta forma apenas palavras terminadas em "<span style="color:#2f8fcc">ente</span>" seriam encontradas. O metacaracter $ e muitos outros serão exemplificados ao longo deste texto.
+
+As expressões regulares são utilizadas em diversos lugares (inclusive em um simples ctrl + f). Editores de texto localizam e substituem _strings_ utilizando expressões regulares. IDE's em geral (como o RStudio) realçam sintaxe e inclusive identificam possíveis problemas no código. 
+
+
+![O RStudio espera que todo parentêse tenha seu par.](figuras/ErroR.jpg)
+
+Além disso, quando temos uma base de dados com variáveis textuais, muitos problemas podem ocorrer. Neste caso, nós devemos conhecer ferramentas capazes de manipular este tipo de dado. Com isso economizamos muito tempo!!!
+
+Uma outra aplicação interessante pode ser a crítica automática de entrada de dados. Dado um questionário, a resposta só é computada se estiver no padrão predefinido. Por exemplo, em uma entrada de CPF, espera-se que só hajam números. Caso o respondente ponha alguma letra, o sistema não computa a entrada.
+
+<center>![Não há espaços em branco em um endereço de e-mail](figuras/ErroMail.jpg)</center>
+
+***
+
+A forma com que se trabalha com expressões regulares pode ser vista como uma linguagem. Assim sendo, não existe apenas uma só forma de lidar com elas pois as implementações variam de acordo com a ferramenta utilizada. Porém, uma implementação que se destaca chama-se _"Perl"_, sendo que muitas codificações derivam desta implementação. Para se ter ideia esta é a codificação utilizada em muitos pacotes/bibliotecas de _"Python"_, _"C"_ e _"R"_.
+
+### <span style="color:#2f8fcc">Caracteres especiais (metacaracteres)</span>
+
+Nesta seção alguns dos metacaracteres mais importantes serão brevemente descritos e exemplificados. Os metacaracteres tem função muito importante nos códigos utilizando RegEx. Os metacaracteres definem padrões estruturais de uma string, por exemplo, se o padrão buscado encontra-se no inicio ou no final de uma string.
+
+* <span style="color:#ff382f">"^"</span>: Ao usar o metacaracter <span style="color:#2f8fcc">^padrão</span> espera-se encontrar _strings_ que iniciam com o padrão especificado. 
+
+<center>^in = {inocente, incognita, insignificante, ...}</center>
+
+***
+
+* <span style="color:#ff382f">"$"</span>: Ao usar o metacaracter <span style="color:#2f8fcc">padrão\$</span> espera-se encontrar _strings_ que terminem com o padrão especificado.
+
+<center>ente$ = {malandramente, inocente, gente, ...}</center>
+
+***
+
+* <span style="color:#ff382f">"[padrão]"</span>: A expressão <span style="color:#2f8fcc">[padrão]</span> é chamada de classe de caracteres. Dentro de uma classe de caracteres os metacaracteres podem mudar de sentido. Fique atento!
+
+    + ^Bloco [a-p]$ = {Bloco a, Bloco b, …, Bloco p}
+    
+        + Fora de uma classe de caracteres o símbolo "-" é um simples símbolo. 
+        + Dentro da classe ele representa um intervalo. [0-9], [a-z], [A-Z]...
+        
+    ***
+        
+    + S[^a-z]G = {S.G, …, S4G, …, SAG}
+    
+        + Fora de uma classe de caracteres o símbolo "^" expressa "procure no inicio de uma _string_"
+        + Sendo o primeiro caracter dentro da classe de caracteres representa negação. 
+        + Não sendo o primeiro caracter dentro da classe de caracteres representa um simples símbolo
+        
+    ***
+        
+    + [S.G] = {S.G, …, S4G, …, SaG, …, SAG, ...}
+        + Fora de uma classe de caracteres o símbolo "." representa um simples ".".
+        + Dentro da classe ele representa um caracter qualquer. [0-9], [a-z], [A-Z]...
+        
+    ***
+        
+* <span style="color:#ff382f">"|"</span>: Ao usar o metacaracter <span style="color:#2f8fcc">"padrão\_1|padrão\_2"</span> espera-se encontrar _strings_ que contenham pelo menos um dos padrões especificados.
+
+<center>“|” : Assovio|Assobio = {Assovio, Assobio}</center>
+
+***
+
+* <span style="color:#ff382f">"()"</span>: Ao usar o metacaracter <span style="color:#2f8fcc">"(padrão)"</span> o escopo do código é reduzido para o que está entre parênteses.
+
+<center>“()” : Assov|bio = {Assovio, Assobio, Assoviar, biologia, ...}</center>
+<center>“()” : Asso(v|b)io = {Assovio, Assobio}</center>
+
+***
+
+* <span style="color:#ff382f">"?i"</span>: Ao usar o metacaracter <span style="color:#2f8fcc">"?i"</span> ignora-se caso sensitivo, não importando se a letra ou palavra está em escrita em letras maiúsculas ou minúsculas.
+
+<center>“?i” : ((?i)D)ouglas = {douglas, Douglas}</center>
+
+***
+
+* <span style="color:#ff382f">"?"</span>: Ao usar o metacaracter <span style="color:#2f8fcc">"padrãox?"</span> o código busca pelo padrão acrescido ou não de x.
+
+<center>“?” : alunos?= {aluno, alunos}</center>
+
+***
+
+* <span style="color:#ff382f">'\*'</span>: Ao usar o metacaracter <span style="color:#2f8fcc">padrão\*</span> o código busca pelo último digito (ou padrão entre parênteses) repetidos 0 ou mais vezes.
+
+<center>“\*” : Go\*l = {Gl, Gol, Gool, ...}</center>
+
+***
+
+* <span style="color:#ff382f">'\+'</span>: Ao usar o metacaracter <span style="color:#2f8fcc">padrão\+</span> o código busca pelo último digito (ou padrão entre parênteses) repetidos uma ou mais vezes.
+
+<center>“+” : Go+l = {Gol, Gool, Goool,...}</center>
+
+***
+
+### <span style="color:#2f8fcc">Caracteres especiais (metasequencias)</span>
+
+***
+
+**Seu funcionamento depende da implementação**
+
+***
+
+* <span style="color:#ff382f">'{n}'</span>: Ao usar a metasequencia <span style="color:#2f8fcc">padrão{n}</span> o código busca pelo último digito (ou padrão, entre parênteses) repetidos exatamente n vezes.
+
+<center>“{n}” : Go{3}l = {Goool}</center>
+
+***
+
+* <span style="color:#ff382f">'{n,}'</span>: Ao usar a metasequencia <span style="color:#2f8fcc">padrão{n}</span> o código busca pelo último digito (ou padrão, entre parênteses) repetidos n ou mais vezes.
+
+<center>“{n,}” : Go{3,}l = {Goool, Gooool, ...}</center>
+
+***
+
+* <span style="color:#ff382f">'{n,m}'</span>: Ao usar a metasequencia <span style="color:#2f8fcc">padrão{n}</span> o código busca pelo último digito (ou padrão, entre parênteses) repetidos entre n e m vezes.
+
+<center>“{n, m}” : Go{3,4}l = {Goool, Gooool}</center>
+
+***
+
+* <span style="color:#ff382f">'\\\\w'</span>: Ao usar a metasequencia <span style="color:#2f8fcc">padrão\\\\w</span> o código busca pelo padrão concatenado com qualquer dígito [0-9], [a-z], [A-Z] excluíndo-se pontuações e outros símbolos.
+
+<center>“\\\\w”:  letra\\\\w = {letraa, …, letra1, ...}</center>
+
+***
+
+* <span style="color:#ff382f">'\\\\W'</span>: Ao usar a metasequencia <span style="color:#2f8fcc">padrão\\\\W</span> o código busca pelo padrão concatenado com qualquer dígito diferente de [0-9], [a-z], [A-Z].
+
+<center>“\\\\W”: “\\\\W”: letra\\\\W = {letra*, letra%, ...}</center>
+
+***
+
+* <span style="color:#ff382f">'“\\\\<\\\\>”'</span>: Ao usar a metasequencia <span style="color:#2f8fcc">\\\\\<padrão\\\\\></span> o código busca exatamente pelo padrão específicado.
+
+<center>“\\\\\<\\\\\>”: \\\\\<inocente\\\\\> = {inocente}</center>
+
+***
+
+* <span style="color:#ff382f">'“\\\\b”'</span>: Ao usar a metasequencia <span style="color:#2f8fcc">\\\\bpadrão</span> o código busca pelo primeiro digito (ou padrão, entre parênteses) apenas no inicio de uma palavra.
+
+<center>“\\\\b” : \\\\bc  = {cor, a cor, bloco c, ...}</center>
+
+***
+
+* <span style="color:#ff382f">'“\\\\B”'</span>: Ao usar a metasequencia <span style="color:#2f8fcc">\\\\Bpadrão</span> o código busca pelo primeiro digito (ou padrão, entre parênteses) apenas no meio de uma palavra.
+
+<center>“\\\\B” : \\\\Bc  = {ancôra, arcabouço, …}</center>
+
+***
+
+* <span style="color:#ff382f">'“\\\\d”'</span>: Ao usar a metasequencia <span style="color:#2f8fcc">\\\\d</span> o código busca por números.
+
+<center>“\\\\d” : \\\\d  = {0, 1, 2, ..., 987654321}</center>
+
+***
+
+* <span style="color:#ff382f">'“\\\\s”'</span>: Ao usar a metasequencia <span style="color:#2f8fcc">\\\\s</span> o código busca por espaços.
+
+<center>“\\\\s” : a\\\\sto  = {a torre, a torta, a toalha, ...}</center>
+
+***
+
+### <span style="color:#2f8fcc">Caracteres especiais (escape)</span>
+
+Algumas vezes os símbolos utilizados como metacaracteres podem fazer parte de uma string. Para localiza-los usam-se os períodos de escape. Exemplos:
+
+***
+
+* “\\\?” : por quê\\? = {por quê?}
+
+***
+
+* ‘\\”’ : \\“debugar\\” = {“debugar”}
+
+***
+
+Como pode ser visto, existem muitos metacaracteres e metasequencias. O uso conjunto dessas expressões pode fornecer ferramentas poderosas para tratamento de _strings_. Alguns exemplos de como combinar essas expressões:
+
+<div class="col2">
+<center>
+<span style="font-size: 1.1em">**(w{3}\\\\.[a-z]{3,10}\\\\.[a-z]{3})$**</span>
+
+<div class="col2">
+<span style="color:#2f8fcc">**Resultados possíveis**</span>
+
+<span style="color:#2f8fcc">www.voegol.com</span>
+
+<span style="color:#2f8fcc">www.kaggle.com</span>
+
+<span style="color:#ff382f">**Resultados impossíveis**</span>
+
+<span style="color:#ff382f">www.ufmg.br</span>
+
+<span style="color:#ff382f">www.g1.globo.com</span>
+</div>
+    
+<span style="font-size: 1.1em">**\\\\<([0-9]{3}\\\\.[0-9]{3}\\\\.[0-9]{3}-[0-9]{2})\\\\>**</span>
+
+<div class="col2">
+<span style="color:#2f8fcc">**Resultados possíveis**</span>
+
+<span style="color:#2f8fcc">000.000.000-00</span>
+
+<span style="color:#2f8fcc">100.000.000-00</span>
+    
+<span style="color:#ff382f">**Resultados impossíveis**</span>
+
+<span style="color:#ff382f">000 000 000-00</span>
+
+<span style="color:#ff382f">cpf: 000.000.000-00</span>
+</div>
+</center>
+</div>   
+
+O código pode ser tão complexo quanto se queira !!
+
+![](figuras/RegexLivro.jpg)
+
+## <span style="color:#2f8fcc">stringr e base</span>
+
+```{r, echo = FALSE, message=FALSE}
+require(stringr)
+```
+
+Nesta seção as funcionalidades mais importantes do _stringr_ e do _base_ serão brevemente explicadas e exemplificadas.
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_c:</span> Concatena _strings_ (stringr).
+
+```{r}
+strings_c1 <- letters[1:5]
+strings_c2 <- LETTERS[1:5]
+
+str_c(strings_c1, strings_c2, sep = " -> ", collapse = "; ")
+
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">paste:</span> Concatena _strings_ (base).
+
+```{r}
+paste(strings_c1, strings_c2, sep = " -> ", collapse = "; ")
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">paste0:</span> Concatena _strings_ sem deixar espaços (base).
+
+```{r}
+paste0(strings_c1, strings_c2, collapse = "; ")
+```
+
+***
+    
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_to\_upper:</span> Deixa a _string_ completamente em letras maiúsculas (stringr).
+
+```{r}
+strings_lower <- letters[1:5]
+
+str_to_upper(string = strings_lower)
+```
+
+***
+    
+#### <span style="color:#2f8fcc; font-size: 1.1em;">toupper:</span> Deixa a _string_ completamente em letras maiúsculas (base).
+
+```{r}
+strings_lower <- letters[1:5]
+
+toupper(x = strings_lower)
+```
+
+***
+    
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_to\_lower:</span> Deixa a _string_ completamente em letras minúsculas (stringr).
+
+```{r}
+strings_upper <- LETTERS[1:5]
+
+str_to_lower(string = strings_upper)
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">tolower:</span> Deixa a _string_ completamente em letras minúsculas (base).
+
+```{r}
+strings_upper <- LETTERS[1:5]
+
+tolower(strings_upper)
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_conv:</span> Converte strings de acordo com a codificação desejada (stringr).
+
+```{r, warning=FALSE}
+strings_conv <- c("Diferenças", "nas", "codificações")
+strings_conv <- iconv(x = strings_conv, to = "Windows-1252")
+
+strings_conv
+str_conv(string = strings_conv, encoding = "Windows-1252")
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">iconv:</span> Converte strings de acordo com a codificação desejada (base).
+
+```{r, warning=FALSE}
+iconv(x = strings_conv, from = "Windows-1252")
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_count:</span> Conta o número de vezes em que o padrão especificado foi encontrado na _string_ (stringr).
+
+```{r, warning=FALSE}
+strings_count <- c("#S4G", "#SQN", "#S4G #SQN")
+
+str_count(string = strings_count, pattern = "#[0-9a-zA-Z]{3}")
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_detect:</span> Se o padrão desejado existe na string retorna TRUE caso contrário FALSE (stringr).
+
+```{r, warning=FALSE}
+strings_detect <- c("Será que o código detecta o padrão #@!?")
+
+str_detect(string = strings_detect, pattern = "#@!")
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_dup:</span> Replica as strings segundo uma contagem desejada (stringr).
+
+```{r, warning=FALSE}
+strings_dup <- c("Gato", "Cachorro", "Galinha")
+count <- c(2, 3, 1)
+
+str_dup(string = strings_dup, times = count)
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_extract:</span> Retorna a primeira ocorrência do padrão especificado (stringr).
+
+```{r, warning=FALSE}
+strings_extract <- c("Esse código", "pega a 1ª", "ocorrência de cada palavra")
+
+str_extract(string = strings_extract, pattern = "[a-z]{4}")
+str_extract(string = strings_extract, pattern = "[a-z]{4}$")
+str_extract(string = strings_extract, pattern = "[a-zA-Z]{4}")
+str_extract(string = strings_extract, pattern = "[0-9]")
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\length:</span> Conta o número de letras em uma string incluindo espaços (stringr).
+
+```{r, warning=FALSE}
+strings_length <- c("Quantas letras estão dentro desta string? Incluindo os espaços")
+
+str_length(string = strings_length)
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_locate:</span> Retorna a posição de inicio e de fim da string desejada (stringr).
+
+```{r, warning=FALSE}
+strings_locate <- c("Em que local está a string #?")
+
+str_locate(string = strings_locate, pattern = c("Em", "#"))
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_match:</span> Verifica se o padrão desejado existe na string de interesse e retorna tal padrão (stringr).
+
+```{r, warning=FALSE}
+strings_match <- c("#FFFFFF")
+
+str_match(string = strings_match, pattern = c("^#[A-Z]{6}$", "FFFFFF"))
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">grep:</span> Verifica se o padrão desejado existe na string de interesse e retorna tal padrão (base).
+
+```{r, warning=FALSE}
+grep(x = strings_match, pattern = c("^#[A-Z]{6}$"), value = T) # Não vetorizada
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_order:</span> Ordena as strings e retorna as posições (stringr).
+
+```{r, warning=FALSE}
+strings_order <- c("#", "$", 0:9, LETTERS, letters)
+
+str_order(x = strings_order, decreasing = F)
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_sort:</span> Ordena as strings e retorna o vetor (stringr).
+
+```{r, warning=FALSE}
+strings_sort <- c("#", "$", 0:9, LETTERS, letters)
+
+str_sort(x = strings_order, decreasing = F)
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_pad:</span> Acrescenta um determinado padrão ao redor da string (stringr).
+
+```{r, warning=FALSE}
+strings_pad <- c("Direita", "Esquerda", "Centro")
+
+str_pad(string = strings_pad[1], side = "right", width = 30)
+str_pad(string = strings_pad[2], side = "left", width = 30)
+str_pad(string = strings_pad[3], side = "both", width = 30)
+str_pad(string = strings_pad[3], side = "both", width = 30, pad = "*")
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_replace e str\_replace\_all:</span> Substitui um determinado padrão por outro (stringr).
+
+```{r, warning=FALSE}
+strings_replace <- c("Hey", "Jude", "don't", "make", "it", "bad", "take", "a", "sad", "song", "and", "make", "it", "better")
+
+str_replace(string = strings_replace, pattern = "Jude", replacement = "Douglas")
+str_replace(string = strings_replace, pattern = "[aeiou]", replacement = "_")
+str_replace_all(string = strings_replace, pattern = "[aeiou]", replacement = "_")
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">gsub:</span> Substitui um determinado padrão por outro (base).
+
+```{r, warning=FALSE}
+gsub(x = strings_replace, pattern = "[aeiou]", replacement = "_")
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_split:</span> Quebra a string de acordo com o padrão desejado. Retorna um vetor de strings e não mais uma string (stringr).
+
+```{r, warning=FALSE}
+strings_split <- str_c(strings_replace, collapse = " ")
+
+str_split(string = strings_split, pattern = " ")
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_sub:</span> Retorna um pedaço da string (stringr).
+
+```{r, warning=FALSE}
+strings_sub <- "Stats4Good"
+
+str_sub(string = strings_sub, start = 1, end = 5)
+str_sub(string = strings_sub, start = 7, end = 10)
+str_sub(string = strings_sub, start = c(1,7), end = c(5,10)) # Dados da PNAD com posição fixa.
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">substr:</span> Retorna um pedaço da string (base)
+
+```{r, warning=FALSE}
+strings_sub <- "Stats4Good"
+
+str_sub(string = strings_sub, start = 1, end = 5)
+str_sub(string = strings_sub, start = 7, end = 10)
+str_sub(string = strings_sub, start = c(1,7), end = c(5,10)) # Dados da PNAD com posição fixa.
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_subset:</span> Retorna o grupo de strings que contém um determinado padrão (stringr).
+
+```{r, warning=FALSE}
+strings_subset <- c("Estatística", "Ciências atuariais", "Matemática", "Ciências da computação")
+
+str_subset(string = strings_subset, pattern = "a[a-z]{1,4}a[a-z]{1,4}a") 
+str_subset(string = strings_subset, pattern = "^(E|e)") 
+str_subset(string = strings_subset, pattern = "a$") 
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_trim:</span> Retira espaçoes em branco desnecessários (stringr).
+
+```{r, warning=FALSE}
+strings_trim <- c("  String cheia de espaços em branco nos extremos  ")
+
+str_trim(string = strings_trim) 
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_trunc:</span> Trunca a string no número de caracteres desejado (stringr).
+
+```{r, warning=FALSE}
+strings_trunc <- c("Mais firme do que prego em polenta")
+
+str_trunc(string = strings_trunc, width = 20) 
+str_trunc(string = strings_trunc, width = 20, side = "center") 
+```
+
+***
+
+#### <span style="color:#2f8fcc; font-size: 1.1em;">str\_wrap:</span> Dado um texto a função realiza a quebra de linha de acordo com o número de letras desejado (por linha) (stringr).
+
+```{r, warning=FALSE}
+strings_wrap <- c("In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam id dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris dictum facilisis augue. Fusce tellus. Pellentesque arcu. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Etiam ligula pede, sagittis quis, interdum ultricies, scelerisque eu, urna. Nullam at arcu a est sollicitudin euismod. Praesent dapibus. Duis bibendum, lectus ut viverra rhoncus, dolor nunc faucibus libero, eget facilisis enim ipsum id lacus. Nam sed tellus id magna elementum tincidunt.")
+
+cat(str_wrap(string = strings_wrap, width = 100) , "\n")
+```
+
+Pergunta: por que usar o pacote _stringr_? 
+
+* Os nomes das funções são mais consistentes
+* Os nomes dos parâmetros são mais consistentes
+* O pacote é do Hadley Wickham. Então é garantia de qualidade! 
+* O pacote lida bem com NAs. Exemplo: 
+
+
+```{r, warning=FALSE}
+strings_na <- c(NA, "não", "é", "string")
+
+paste(strings_na, collapse = " ")
+str_c(strings_na, collapse = " ")
+```
+
+## <span style="color:#2f8fcc">Mãos à obra</span>
+
+***
+
+Agora vamos por em prática o que aprendemos até aqui. Dois exemplos práticos serão abordados:
+
+***
+
+* Limpeza de um pequeno texto
+
+***
+
+* Criação de uma função que valida as entradas de informação
+
+### <span style="color:#2f8fcc">Limpando um texto</span>
+
+Para tentar usar os conhecimentos de expressões regulares considere o seguinte texto de Marcio Ricardo Medeiros Oliveira:
+
+```{r, echo = FALSE, message=FALSE}
+texto <- "toda_Escolha___quE_você_FizEr_E_toda_DECisão_quE_você_toMar_ tErá_sEu_lado_boM_E_sEu_lado_ruiM.@.@_considErE-os__ coM__cuidado_E_toME_a_dEcisão_.@UMa_rEsposta_ MEnos_quE_pErfEita_é_infinitaMEntE_MElhor_do_quE_não_fazEr_nada_.@
+Tudo_quE_vocE_sE_dispõE_a_fazEr_EnvolvE_alguns_ riscos_E_dEsafios.@_Para_qualquEr_coisa_quE_você_EMprEEndEr_ ExistEM_ Muitas_razõEs_para_não_fazê-lo.@_PEsE_os_ riscos_E_os_bEnEfícios_E,_Então_assuMa_o_coMproMisso_dE_agir.@_DEcida_o_quE_você_ quEr_fazEr,_coM_os_olhos_bEM_abErtos,_E_ lEvE_isso_EM_frEntE_sEM_olhar_para_trás.@
+ExistEM_Muitas_dirEçõEs_dEntrE_as_quais_ você_podE_EscolhEr.@_MEsMo_assiM,_você_prEcisa_EscolhEr. @_Suas_possibilidadEs_são_ significativas_apEnas_quando_você_EscolhE_ alguMas_dElas__E_rEjEita_o_rEsto.@_TEntar_fazEr_tudo_ao_MEsMo_tEMpo_é_ tão_inútil_ quanto_não_tEntar_nada.@
+DEfina-sE.@_Escolha_sEu_caMinho_E_coMEcE_ a_andar.@_DEcida_o_quE_quEr_fazEr_E_Mãos_à_obra.@"
+```
+
+<div style="background-color:#a4c2f4; color:#1e3236; vertical-align: middle; padding:40px 40px;">
+<p align = "justify">
+`r paste(texto)`
+</p>
+</div>
+
+***
+
+Problemas:
+
+  * O espaço está representado por "\_"
+  * Excesso de espaços
+  * Letras maiúsculas onde não deve
+  * Letras minúsculas onde não deve
+  * Caracteres indesejados ("@")
+
+Tratamento:
+
+```{r, warning=FALSE,}
+texto <- str_replace_all(string = texto, pattern = "_", replacement = " ")
+texto <- str_replace_all(string = texto, pattern = "(\\s)+", replacement = " ")
+texto <- str_to_lower(string = texto)
+texto <- str_replace_all(string = texto, pattern = "@", replacement = "")
+texto <- str_replace_all(string = texto, pattern = "\\s([!.?,])", replacement = "\\1")
+texto <- str_replace_all(string = texto, pattern = "([!.?,])([\\w])", replacement = "\\1\\s\\2")
+texto <- str_replace_all(string = texto, pattern = "([!.?,])+", replacement = "\\1")
+texto <- gsub(x = texto, pattern = "([!.?]\\s)(\\w)|(^\\w)", replacement = "\\1\\U\\2\\U\\3", perl = T)
+```
+
+***
+
+<div style="background-color:#a4c2f4; color:#1e3236; vertical-align: middle; padding:40px 40px;">
+<p align = "justify">
+`r paste(texto)`
+</p>
+</div>
+
+***
+
+Os comandos "\\1", "\\2" usados no argumento _replacement_ são chamados de _backreference_. São muito úteis quando o padrão que irá substituir faz parte do padrão procurado. "\\1" refere-se ao primeiro escopo definido pelos parênteses "( )".
+
+***
+
+### <span style="color:#2f8fcc">Criando uma ferramenta de validação</span>
+
+Para demonstrar o possível uso de expressões regulares no contexto de ferramenta de validação, vamos explorar as possíveis entradas de um questionário de avaliação. O título do questionário será: Você considera o R uma ferramenta poderosa?
+
+Para responder à este questionário o usuário deve criar um _loggin_ e uma _senha_, pois, esse é um questionário restrito. Este _loggin_ deve conter apenas letras e números. Já a senha deve conter pelo menos uma letra, um número e um caracter alfanumérico, além disso a senha deve conter exatamente oito caracteres.
+
+Após acessar o questionário o usuário deverá responder questões comuns e também responder a questão mais importante e que dá nome ao questionário. Tudo isso, é claro, será validade com a utilização de expressões regulares e das funções da base do R e também do pacote _stringr_. Questões utilizadas no questionário:
+
+  * Nome
+  * Sexo
+  * Idade
+  * CPF
+  * Cidade
+  * Estado
+  * CEP 
+  * Telefone com DDD
+  * E-mail
+  * Você considera o R uma ferramenta poderosa?
+  
+A ferramenta abaixo utiliza expressões regulares para consolidar as entradas de um questionário. Este questionário não está com todas as funcionalidades e possivelmente contenha erros. Caso encontre algum erro, me envie um e-mail (douglasrm.azevedo@gmail.com).
+
+Para executar a aplicação [clique aqui](../questionario.R) e baixe o código.
+
+Existem muitos outros aspectos a serem estudados no mundo das expressões regulares. Além disso, o uso das ferramentas de manipulação de strings é estremamente útil em diversos casos. Espero que este documento sirva como uma primeira leitura para interessados em expressões regulares.
+
+## <span style="color:#2f8fcc">Referências</span>
+
+[Friedl, Jeffrey EF. Mastering regular expressions. " O'Reilly Media, Inc.", 2002.](https://books.google.com.br/books?hl=pt-BR&lr=&id=CT-MHZyNK2wC&oi=fnd&pg=PR15&dq=Mastering+Regular+Expressions,+Second+Edition+Jeffrey+E.F.+Friedl-O%27Reilly+(2002)&ots=ecY2U03UQP&sig=S7v-k5hP3kwhfgHs1xvuTruDXa4#v=onepage&q&f=false)
+
+[Hadley Wickham (2016). stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.1.0.](https://cran.r-project.org/web/packages/stringr/stringr.pdf https://CRAN.R-project.org/package=stringr)
+
+[Tutorial do stringr (vignettes)](https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html)
+
+[Wikipedia - regular expression](https://en.wikipedia.org/wiki/Regular_expression)
+

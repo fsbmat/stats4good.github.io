@@ -43,6 +43,13 @@ title: Stats4Good
 ***
 
 <div class="clearfix float-my-children">
+   <iframe src="https://www.youtube.com/embed/m1MtP-copgA"></iframe>   
+   <div><b>Larissa Sayuri Santos:</b><br>Twitter: Coleta, classificação e <br> apresentação de dados no R.</div>
+</div>
+
+***
+
+<div class="clearfix float-my-children">
    <iframe src="https://www.youtube.com/embed/zOuwM_z24qs"></iframe>   
    <div><b>Rodrigo Citton:</b><br>Tomadores de decisão: um exemplo em risco<br>de doença cardiovascular.</div>
 </div>
