@@ -12,16 +12,12 @@ title: Stats4Good
 
 ***
 
-<div class="grid grid-pad">
-    <div class="col-3-12">
-       <div class="content">
-           <h3>col-3-12</h3>
-       </div>
+<div id="wrap">
+    <div id="left_col">
+        ...
     </div>
-    <div class="col-9-12">
-       <div class="content">
-           <h3>col-9-12</h3>
-       </div>
+    <div id="right_col">
+        ...
     </div>
 </div>
 
