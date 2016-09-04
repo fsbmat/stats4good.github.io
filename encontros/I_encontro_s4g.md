@@ -15,12 +15,14 @@ title: Stats4Good
 
 <div class="clearfix float-my-children">
    <iframe src="https://www.youtube.com/embed/0q1awh9KlEI"></iframe>
-   <p align = "justify">Abertura do I encontro Stats4Good.</p>
+   <div><b>Douglas Azevedo e Milton Pifano:</b></div>
+   <div>Abertura do I encontro Stats4Good</div>
 </div>
 
 ***
 
 <div class="clearfix float-my-children">
    <iframe src="https://www.youtube.com/embed/mRH6bwSghnM"></iframe>
-   <p align = "justify">Magda Pires, Glaura Franco e Marcos Prates: Programas de graduação e pós-graduação em estatística na UFMG.</p>
+   <div><b>Magda Pires, Glaura Franco e Marcos Prates:</b></div>
+   <div>Programas de graduação e pós-graduação em estatística na UFMG.</div>
 </div>
