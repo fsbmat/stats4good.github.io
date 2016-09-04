@@ -11,6 +11,7 @@ title: Stats4Good
 <center><img src="/encontros/I_encontro_s4g/Grupo.jpg" I Encontro Stats4Good width="500" ></center>
 
 ***
+<center><font size="6" color="#76asaf"><b>Apresentações</b></font></center>
 ***
 
 <div class="clearfix float-my-children">
