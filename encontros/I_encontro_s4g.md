@@ -8,7 +8,7 @@ title: Stats4Good
 
 ***
 
-<center><img src="/encontros/I_encontro_s4g/Grupo.jpg" I Encontro Stats4Good width="100" ></center>
+<center><img src="/encontros/I_encontro_s4g/Grupo.jpg" I Encontro Stats4Good width="500" ></center>
 
 ***
 ***
@@ -43,7 +43,7 @@ title: Stats4Good
 ***
 
 <div class="clearfix float-my-children">
-   <iframe src="https://www.youtube.com/embed/LxIJ2nZy9FE"></iframe>
+   <iframe src="https://www.youtube.com/embed/LxIJ2nZy9FE"></iframe>   
    <div><b>Roberto Nalon:</b></div>
    <br>
    <div>A web como fonte de dados:</div>
