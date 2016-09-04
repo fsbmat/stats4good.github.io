@@ -22,10 +22,10 @@ title: Stats4Good
 ***
 
 <div class="clearfix float-my-children">
+   <iframe src="https://www.youtube.com/embed/mRH6bwSghnM"></iframe>
    <div><b>Magda Pires, Glaura Franco e Marcos Prates:</b></div>
    <div>Programas de graduação e pós-graduação</div>
    <div> em estatística na UFMG.</div>
-   <iframe src="https://www.youtube.com/embed/mRH6bwSghnM"></iframe>
 </div>
 
 ***
@@ -40,9 +40,9 @@ title: Stats4Good
 ***
 
 <div class="clearfix float-my-children">
+   <iframe src="https://www.youtube.com/embed/LxIJ2nZy9FE"></iframe>
    <div><b>Roberto Nalon:</b></div>
    <div>A web como fonte de dados: Oportunidades e desafios.</div>
-   <iframe src="https://www.youtube.com/embed/LxIJ2nZy9FE"></iframe>
 </div>
 
 ***
@@ -57,42 +57,42 @@ title: Stats4Good
 ***
 
 <div class="clearfix float-my-children">
+   <iframe src="https://www.youtube.com/embed/xJ36LcfGa9Q"></iframe>   
    <div><b>Raquel Aoki:</b></div>
    <div>Estudo do desempenho acadêmico dos</div>
    <div>estudantes da UFMG em Cálculo I.</div>
-   <iframe src="https://www.youtube.com/embed/xJ36LcfGa9Q"></iframe>   
 </div>
 
 ***
 
 <div class="clearfix float-my-children">
+   <iframe src="https://www.youtube.com/embed/S6SIW8dSfBM"></iframe>   
    <div><b>Pedro Franklin:</b></div>
    <div>Encontrando a(o) namorada(o) ideal:</div>
    <div>um passeio aleatório pela probabilidade.</div>
-   <iframe src="https://www.youtube.com/embed/S6SIW8dSfBM"></iframe>   
 </div>
 
 ***
 
 <div class="clearfix float-my-children">
+   <iframe src="https://www.youtube.com/embed/yjejhpTfSc0"></iframe>
    <div><b>Bernardo Lanza:</b></div>
    <div>The Evolution of the Labor Force and</div>
-   <div>Retirement in Brazil, 1980-2050.</div>
-   <iframe src="https://www.youtube.com/embed/yjejhpTfSc0"></iframe>   
+   <div>Retirement in Brazil, 1980-2050.</div>   
 </div>
 
 ***
 
 <div class="clearfix float-my-children">
+   <iframe src="https://www.youtube.com/embed/gktbwTFI350"></iframe>   
    <div><b>EstatMG:</b></div>
    <div>Espaço para divulgação da empresa.</div>
-   <iframe src="https://www.youtube.com/embed/gktbwTFI350"></iframe>   
 </div>
 
 ***
 
 <div class="clearfix float-my-children">
+   <iframe src="https://www.youtube.com/embed/zNrooIld26A"></iframe>   
    <div><b>Renato Assunção:</b></div>
    <div>Estatística no século XXI</div>
-   <iframe src="https://www.youtube.com/embed/zNrooIld26A"></iframe>   
 </div>
