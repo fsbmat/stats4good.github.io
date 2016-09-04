@@ -16,10 +16,6 @@
 .clearfix:after {
     clear: both;
 }
-body > div {
-    border:1px dashed red;
-    margin-bottom:10px;    
-}
 body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 18px;
