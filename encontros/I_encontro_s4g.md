@@ -11,11 +11,20 @@ title: Stats4Good
 <center><img src="/encontros/I_encontro_s4g/Grupo.jpg" I Encontro Stats4Good></center>
 
 ***
+***
 
 <div class="left">
     <iframe src="https://www.youtube.com/embed/0q1awh9KlEI"></iframe>
 </div>
 <div class="right">
-    Abertura do I encontro Stats4Good.
+    <p align = "justify">Abertura do I encontro Stats4Good.</p>
 </div>
 
+***
+
+<div class="left">
+    <iframe src="https://www.youtube.com/embed/0q1awh9KlEI"></iframe>
+</div>
+<div class="right">
+    <p align = "justify">Abertura do I encontro Stats4Good.</p>
+</div>
