@@ -10,7 +10,7 @@ subtitle: Blog
 
 ***
 
-<center><img src="/blog_posts/02-09-2016/regex.jpg" Markdown></center>
+<center><img src="/blog_posts/02-09-2016/regex.jpg" Markdown width="500" ></center>
 
 **12-08-2016 - Douglas R. Mesquita Azevedo:**
 
