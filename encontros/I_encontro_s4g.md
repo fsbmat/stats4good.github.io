@@ -15,7 +15,7 @@ title: Stats4Good
 ***
 
 <div class="clearfix float-my-children">
-   <iframe allowFullScreen='allowFullScreen' src="https://www.youtube.com/embed/0q1awh9KlEI"></iframe>
+   <iframe src="https://www.youtube.com/embed/0q1awh9KlEI" frameborder="0" allowfullscreen></iframe>
    <div><b>Douglas Azevedo e Milton Pifano:</b><br>Abertura do I encontro Stats4Good.</div>
 </div>
 
