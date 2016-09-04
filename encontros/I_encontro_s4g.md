@@ -22,69 +22,69 @@ title: Stats4Good
 ***
 
 <div class="clearfix float-my-children">
-   <iframe src="https://www.youtube.com/embed/mRH6bwSghnM"></iframe>
+   <iframe src="https://www.youtube.com/embed/mRH6bwSghnM" frameborder="0" allowfullscreen></iframe>
    <div><b>Magda Pires, Glaura Franco e Marcos Prates:</b><br>Programas de graduação e pós-graduação<br>em estatística na UFMG.</div>
 </div>
 
 ***
 
 <div class="clearfix float-my-children">
-   <iframe src="https://www.youtube.com/embed/ozzKMNUyRNA"></iframe>   
+   <iframe src="https://www.youtube.com/embed/ozzKMNUyRNA" frameborder="0" allowfullscreen></iframe>   
    <div><b>Geraldo Franciscani:</b><br>Aplicações de D3.js em cenários reais<br>de visualização de dados.</div>
 </div>
 
 ***
 
 <div class="clearfix float-my-children">
-   <iframe src="https://www.youtube.com/embed/LxIJ2nZy9FE"></iframe>   
+   <iframe src="https://www.youtube.com/embed/LxIJ2nZy9FE" frameborder="0" allowfullscreen></iframe>   
    <div><b>Roberto Nalon:</b><br>A web como fonte de dados:<br>Oportunidades e desafios.</div>
 </div>
 
 ***
 
 <div class="clearfix float-my-children">
-   <iframe src="https://www.youtube.com/embed/m1MtP-copgA"></iframe>   
+   <iframe src="https://www.youtube.com/embed/m1MtP-copgA" frameborder="0" allowfullscreen></iframe>   
    <div><b>Larissa Sayuri Santos:</b><br>Twitter: Coleta, classificação e <br> apresentação de dados no R.</div>
 </div>
 
 ***
 
 <div class="clearfix float-my-children">
-   <iframe src="https://www.youtube.com/embed/zOuwM_z24qs"></iframe>   
+   <iframe src="https://www.youtube.com/embed/zOuwM_z24qs" frameborder="0" allowfullscreen></iframe>   
    <div><b>Rodrigo Citton:</b><br>Tomadores de decisão: um exemplo em risco<br>de doença cardiovascular.</div>
 </div>
 
 ***
 
 <div class="clearfix float-my-children">
-   <iframe src="https://www.youtube.com/embed/xJ36LcfGa9Q"></iframe>   
+   <iframe src="https://www.youtube.com/embed/xJ36LcfGa9Q" frameborder="0" allowfullscreen></iframe>   
    <div><b>Raquel Aoki:</b><br>Estudo do desempenho acadêmico dos<br>estudantes da UFMG em Cálculo I.</div>
 </div>
 
 ***
 
 <div class="clearfix float-my-children">
-   <iframe src="https://www.youtube.com/embed/S6SIW8dSfBM"></iframe>   
+   <iframe src="https://www.youtube.com/embed/S6SIW8dSfBM" frameborder="0" allowfullscreen></iframe>   
    <div><b>Pedro Franklin:</b><br>Encontrando a(o) namorada(o) ideal:<br>um passeio aleatório pela probabilidade.</div>
 </div>
 
 ***
 
 <div class="clearfix float-my-children">
-   <iframe src="https://www.youtube.com/embed/yjejhpTfSc0"></iframe>
+   <iframe src="https://www.youtube.com/embed/yjejhpTfSc0" frameborder="0" allowfullscreen></iframe>
    <div><b>Bernardo Lanza:</b><br>The Evolution of the Labor Force and<br>Retirement in Brazil, 1980-2050.</div>
 </div>
 
 ***
 
 <div class="clearfix float-my-children">
-   <iframe src="https://www.youtube.com/embed/gktbwTFI350"></iframe>   
+   <iframe src="https://www.youtube.com/embed/gktbwTFI350" frameborder="0" allowfullscreen></iframe>   
    <div><b>EstatMG:</b><br>Espaço para divulgação da empresa.</div>
 </div>
 
 ***
 
 <div class="clearfix float-my-children">
-   <iframe src="https://www.youtube.com/embed/zNrooIld26A"></iframe>   
+   <iframe src="https://www.youtube.com/embed/zNrooIld26A" frameborder="0" allowfullscreen></iframe>   
    <div><b>Renato Assunção:</b><br>Estatística no século XXI</div>
 </div>
